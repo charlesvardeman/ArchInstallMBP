@@ -1,5 +1,5 @@
 #!/usr/bin/bash
-# Defining the shell path and global variables 
+# Defining the shell path and global variables
 SHELL_PATH=$(readlink -f $0 | xargs dirname)
 source ${SHELL_PATH}/scripts/global.sh
 
@@ -24,7 +24,7 @@ cp /etc/pacman.d/mirrorlist  /etc/pacman.d/mirrorlist.backup
 reflector --verbose --latest 10 --sort rate --save /etc/pacman.d/mirrorlist
 
 info "Installing all packages to get sway under wayland working with audio. Some additional useful packages are included also."
-pacstrap /mnt base base-devel vim neovim intel-ucode sudo networkmanager wpa_supplicant git alsa-utils pulseaudio-alsa coreutils dosfstools util-linux exa linux linux-firmware linux-headers linux-lts linux-lts-headers broadcom-wl
+pacstrap /mnt base base-devel vim neovim intel-ucode sudo networkmanager wpa_supplicant git alsa-utils pulseaudio-alsa coreutils dosfstools util-linux exa linux linux-firmware linux-headers linux-lts linux-lts-headers broadcom-wl-dkms
 
 info "Generating fstab for the drives."
 genfstab -L -p /mnt >> /mnt/etc/fstab

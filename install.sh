@@ -1,14 +1,14 @@
 #!/usr/bin/bash
-# Defining the shell path and global variables 
+# Defining the shell path and global variables
 SHELL_PATH=$(readlink -f $0 | xargs dirname)
 source ${SHELL_PATH}/scripts/global.sh
 
 info "Setting Time zone and Time"
-ln -sf /usr/share/zoneinfo/Europe/London /etc/localtime
+ln -sf /usr/share/zoneinfo/America/New_York /etc/localtime
 hwclock --systohc --utc
 
 info "Setting system wide language"
-sed -i '/en_GB.UTF-8'/s/^#//g /etc/locale.gen
+sed -i '/en_US.UTF-8'/s/^#//g /etc/locale.gen
 locale-gen
 cp ${SHELL_PATH}/config/etc/locale.conf /etc/
 
@@ -16,7 +16,7 @@ info "Setting font for vconsole"
 cp ${SHELL_PATH}/config/etc/vconsole.conf /etc/
 
 info "Setting machine name."
-echo Freedom > /etc/hostname
+echo Paincave > /etc/hostname
 
 info "Copying the modules to /etc/"
 cp ${SHELL_PATH}/config/etc/modules /etc/
@@ -81,7 +81,7 @@ grub-install --target=x86_64-efi --bootloader-id=GRUB --efi-directory=/boot/efi
 grub-mkconfig -o /boot/grub/grub.cfg
 
 
-sudo systemctl enable NetworkManager 
+sudo systemctl enable NetworkManager
 sudo systemctl enable man-db.timer
 sudo systemctl enable paccache.timer
 
