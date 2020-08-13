@@ -7,8 +7,8 @@ source ${SHELL_PATH}/scripts/global.sh
 info "Formatting the drivers..."
 mkfs.vfat -F32 /dev/sda1
 mkfs.ext4 /dev/sda2
-#mkswap /dev/sda3
-#swapon /dev/sda3
+mkswap /dev/sda3
+swapon /dev/sda3
 
 info "Mounting the drives 1. Root, 2. Boot "
 mount /dev/sda2 /mnt
