@@ -7,6 +7,8 @@ source ${SHELL_PATH}/scripts/global.sh
 # Ensuring the Configuration Directory is present
 mkdir -p $HOME/.config
 
+ln -s ${SHELL_PATH}/bin $HOME/bin
+
 info "Applying Global Configuration"
 sudo cp ${SHELL_PATH}/config/zsh/zshenv /etc/zsh/
 
@@ -22,3 +24,13 @@ ln -s ${SHELL_PATH}/config/nvim ${HOME}/.config
 
 info "NetworkManager Configuration"
 sudo cp ${SHELL_PATH}/config/etc/NetworkManager.conf /etc/NetworkManager/ 
+
+info "Grub Configurations"
+sudo pacman -S --noconfirm grub-theme-vimix
+sudo cp ${SHELL_PATH}/config/grub/grub /etc/default/
+sudo grub-mkconfig -o /boot/grub/grub.cfg
+
+info "Reducing Entropy"
+sudo pacman -S --noconfirm haveged
+sudo systemctl enable haveged
+sudo systemctl start haveged

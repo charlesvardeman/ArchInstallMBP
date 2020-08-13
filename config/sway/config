@@ -12,7 +12,7 @@ set $left h
 set $down j
 set $up k
 set $right l
-set $term alacritty  	# Your preferred terminal emulator
+set $term kitty		#alacritty  	# Your preferred terminal emulator
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 set $menu wofi --show=drun -I
@@ -30,7 +30,8 @@ set $menu wofi --show=drun -I
 output eDP-1 {
 	resolution 2880x1800
 	scale 1.5
-	bg #3c3836 solid_color
+	#bg #3c3836 solid_color
+	bg $HOME/.config/sway/wallpaper.jpg fill
 }
 
 ### Idle configuration
@@ -229,10 +230,10 @@ bar {
 		background #3c3836
 		statusline #fbf1c7
 
-    }
+   }
 }
 
-exec --no-startup-id waybar
+#exec --no-startup-id waybar
 
 # PulseAudio key bindings
 bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 5%+ unmute
