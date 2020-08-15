@@ -21,5 +21,5 @@ sudo pacman --noconfirm -Syu nodejs
 sudo pikaur --noconfirm -S nvm
 
 
-
-
+info "Visual Studio Code"
+sudo pikaur --noconfirm -S visual-studio-code-bin
